@@ -56,7 +56,7 @@ public class VisionSampleProject2014 extends SimpleRobot {
     Relay targetRingLight;
     
     public VisionSampleProject2014() {
-        targetRingLight = new Relay(2);
+        targetRingLight = new Relay(5);
     }
 
     public class Scores {
@@ -79,7 +79,7 @@ public class VisionSampleProject2014 extends SimpleRobot {
     };
 
     public void robotInit() {
-        camera = AxisCamera.getInstance("10.35.28.12");  // get an instance of the camera
+        camera = AxisCamera.getInstance("10.35.28.11");  // get an instance of the camera
         cc = new CriteriaCollection();      // create the criteria for the particle filter
         cc.addCriteria(MeasurementType.IMAQ_MT_AREA, AREA_MINIMUM, 65535, false);
     }
@@ -107,8 +107,9 @@ public class VisionSampleProject2014 extends SimpleRobot {
 
                 // next 2 lines read image from flash on cRIO
                 //image = new RGBImage("/testImage.jpg");		// get the sample image from the cRIO flash
-                BinaryImage thresholdImage = image.thresholdHSV(100, 140, 100, 255, 40, 110); // For Blue LED
+                //BinaryImage thresholdImage = image.thresholdHSV(100, 140, 100, 255, 40, 110); // For Blue LED
                 //BinaryImage thresholdImage = image.thresholdHSV(105, 137, 230, 255, 133, 183); // For Green LED
+                BinaryImage thresholdImage = image.thresholdHSV(50, 100, 210, 255, 100, 210); // For Green LED
                 //thresholdImage.write("/threshold.bmp");
                 BinaryImage filteredImage = thresholdImage.particleFilter(cc);           // filter out small particles
                 //filteredImage.write("/filteredImage.bmp");
