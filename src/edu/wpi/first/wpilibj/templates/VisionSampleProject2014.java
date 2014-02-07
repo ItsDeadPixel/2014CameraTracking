@@ -102,7 +102,7 @@ public class VisionSampleProject2014 extends SimpleRobot {
                  * this case is "testImage.jpg"
                  *
                  */
-
+                
                 ColorImage image = camera.getImage(); // comment if using stored images
 
                 // next 2 lines read image from flash on cRIO
